@@ -128,15 +128,20 @@ def run_script():
             "B2B Website",                       # Lead Source
             first_name,                          # First Name
             last_name,                           # Last Name
-            "", "", "",                          # Follow-Up Count | Last Follow-Up Date | Reply Status
             form_entry.get("your-company", ""),  # Company Name
-            "", "",                              # Comments | Next Followup
-            "", "", "",                          # Call Attempt | WhatsApp msg count | LinkedIn Msg Count
             form_entry.get("phone-number", ""),  # Mobile
             form_entry.get("your-email", ""),    # Email
             expo_name,                           # Show
+            "",                                  # Next Followup
+            "",                                  # Call Attempt
+            "",                                  # WhatsApp msg count
+            "",                                  # Linkedin Msg Count
+            "",                                  # Comments
             pitchdeck_url,                       # Pitch Deck URL
-            "Exhibitors_opportunity"             # Interested for
+            "Exhibitors_opportunity",            # Interested for
+            "",                                  # Follow-Up Count
+            "",                                  # Last Follow-Up Date
+            ""                                   # Reply Status
         ]
 
         new_leads.append(row)
