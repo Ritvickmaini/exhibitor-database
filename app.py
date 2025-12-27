@@ -133,9 +133,10 @@ def run_script():
             form_entry.get("your-email", ""),    # Email
             expo_name,                           # Show
             "",                                  # Next Followup
+            "",                                  #Email Count
             "",                                  # Call Attempt
-            "",                                  # WhatsApp msg count
             "",                                  # Linkedin Msg Count
+            "",                                  # WhatsApp msg count
             "",                                  # Comments
             pitchdeck_url,                       # Pitch Deck URL
             "Exhibitors_opportunity",            # Interested for
