@@ -153,7 +153,7 @@ def run_script():
     # --- Step 3: Batch Insert into Google Sheet ---
     if new_leads:
         # Insert all new leads at once, newest on top
-        sheet.insert_rows(new_leads[::-1], row=2, value_input_option="USER_ENTERED", inherit_from_before=False)
+        sheet.insert_rows(new_leads[::-1], row=2, value_input_option="USER_ENTERED")
         print(f"✅ Inserted {len(new_leads)} leads in one batch at row 2.", flush=True)
 
         # Optional: format inserted rows white
