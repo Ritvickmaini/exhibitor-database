@@ -57,7 +57,7 @@ def run_script():
     print("🌐 Fetching leads from API...", flush=True)
     url = "https://b2bgrowthexpo.com/wp-json/custom-api/v1/protected/exhibitor-media-pack-form-data"
     headers = {
-        "Authorization": "Bearer e3e6836eb425245556aebc1e0a9e5bfbb41ee9c81ec5db1bc121debc5907fd85				"
+        "Authorization": "Bearer e3e6836eb425245556aebc1e0a9e5bfbb41ee9c81ec5db1bc121debc5907fd85"
     }
 
     response = requests.get(url, headers=headers)
@@ -80,13 +80,13 @@ def run_script():
             print(f"⚠️ Skipping invalid item (not dict): {item}")
             continue
             
-        form_entry = item.get("form_value", {})
+        form_entry = item.get("Form_Entry", {})
         if not isinstance(form_entry, dict):
             print(f"⚠️ Invalid form_value for item: {item}")
             continue
 
         # --- Email Handling ---
-        email = form_entry.get("your-email", "").strip().lower()
+        email = form_entry.get("Email", "").strip().lower()
         if not email:
             print(f"⚠️ Skipping entry (no email): {form_entry}")
             continue
@@ -110,7 +110,7 @@ def run_script():
                 continue
 
         # --- Name Handling ---
-        full_name = form_entry.get("your-name", "").strip()
+        full_name = form_entry.get("Name", "").strip()
         first_name, last_name = "", ""
         if full_name:
             parts = full_name.split(" ", 1)
@@ -123,8 +123,7 @@ def run_script():
                 continue
 
         # --- Expo Name ---
-        expo_name = item.get("expo_label", "").strip()
-
+        expo_name = (item.get("expo_name") or form_entry.get("Expo Name", "")).strip()
         # --- Pitch Deck URL ---
         pitchdeck_url = ""
         expo_lower = expo_name.lower()
@@ -141,9 +140,9 @@ def run_script():
             "B2B Website",                       # Lead Source
             first_name,                          # First Name
             last_name,                           # Last Name
-            form_entry.get("your-company", ""),  # Company Name
-            form_entry.get("phone-number", ""),  # Mobile
-            form_entry.get("your-email", ""),    # Email
+            form_entry.get("Company", ""),       # Company Name
+            form_entry.get("Phone", ""),         # Mobile
+            form_entry.get("Email", ""),         # Email
             expo_name,                           # Show
             "",                                  # Next Followup
             "",                                  #Email Count
