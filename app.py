@@ -63,6 +63,12 @@ def run_script():
     response = requests.get(url, headers=headers)
     form_data = response.json()
     entries = form_data.get("data", [])
+    # --- SAFETY CHECK: validate API response shape ---
+    if not isinstance(entries, list):
+        print(f"❌ Unexpected API response type for 'data': {type(entries)}")
+        print("🔍 Raw API response:", form_data)
+        return
+
 
     print(f"📥 Received {len(entries)} entries from API.", flush=True)
 
@@ -70,7 +76,14 @@ def run_script():
     new_leads = []
 
     for item in entries:
+        if not isinstance(item, dict):
+            print(f"⚠️ Skipping invalid item (not dict): {item}")
+            continue
+            
         form_entry = item.get("form_value", {})
+        if not isinstance(form_entry, dict):
+            print(f"⚠️ Invalid form_value for item: {item}")
+            continue
 
         # --- Email Handling ---
         email = form_entry.get("your-email", "").strip().lower()
