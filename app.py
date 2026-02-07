@@ -55,9 +55,9 @@ def run_script():
 
     # --- Step 2: Fetch data from protected API ---
     print("🌐 Fetching leads from API...", flush=True)
-    url = "https://b2bgrowthexpo.com/wp-json/custom-api/v1/protected/expo-exhibitor-data"
+    url = "https://b2bgrowthexpo.com/wp-json/custom-api/v1/protected/exhibitor-media-pack-form-data"
     headers = {
-        "Authorization": "Bearer e3e6836eb425245556aebc1e0a9e5bfbb41ee9c81ec5db1bc121debc5907fd85"
+        "Authorization": "Bearer e3e6836eb425245556aebc1e0a9e5bfbb41ee9c81ec5db1bc121debc5907fd85				"
     }
 
     response = requests.get(url, headers=headers)
