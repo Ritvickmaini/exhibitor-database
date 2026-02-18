@@ -136,6 +136,7 @@ def run_script():
 
         # --- Prepare row ---
         row = [
+            "",
             form_date,                           # Lead Date
             "B2B Website",                       # Lead Source
             first_name,                          # First Name
